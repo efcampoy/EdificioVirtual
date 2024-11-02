@@ -2,7 +2,7 @@
 
 
 resource "aws_default_security_group" "building_security_group" {
-  vpc_id = aws_vpc.building_vpc
+  vpc_id = aws_vpc.building_vpc.id
 
   egress {
     from_port   = 80
