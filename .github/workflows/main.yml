@@ -18,7 +18,7 @@ jobs:
      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
      aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
      aws-region: "us-east-1" # Cambia a la región de AWS que estás usando
-     # creamos key publica para la instancia de aws
+     # creamos key publica para la instancia  de aws
   - name: Create SSH Key File
     run: echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./building-ssh.pub
     shell: bash
@@ -26,36 +26,36 @@ jobs:
     uses: hashicorp/setup-terraform@v3
   - name: Initialize Terraform
     run: terraform init
-    working-directory: ${{ env.tf_actions_working_dir }}
+    working-directory: ./terraform
   - name: Verificar Archivos Después de Apply 2222222222222
     run: |
       echo "Listado de archivos después de terraform apply:"
-      ls -la /home/runner/work/terraform/
+      ls -la ./terraform
   - name: Terraform plan
     run: terraform plan -no-color
-    working-directory: ${{ env.tf_actions_working_dir }}
+    working-directory: ./terraform
   - name: Terraform apply
     id: apply  # Necesitamos el id para el output de la instancia para obtener la ip publica
     run: terraform apply -auto-approve
-    working-directory: ${{ env.tf_actions_working_dir }}
+    working-directory: ./terraform
   - name: Upload Terraform State
     uses: actions/upload-artifact@v4
     with:
       name: terraform.tfstate
-      path: /home/runner/work/terraform/terraform/terraform.tfstate
+      path: ./terraform
   - name: Download Artifact
     uses: actions/download-artifact@v4
     with:
       name: terraform.tfstate
-      path: /home/runner/work/terraform/terraform/downloads
+      path: ./terraform
   - name: copy file via ssh key
     uses: appleboy/scp-action@v0.1.7
     with:
     # Cogemos la ip publica de nuestro archivo outputs terraform
      host: ${{ steps.apply.outputs.building_public_ip }}
-     username: ${{ secrets.USERNAME }}
-     port: ${{ secrets.PORT }}
-     key: ${{ secrets.KEY }}
+     username: ${{ secrets.BUILDING_USERNAME }}
+     port: ${{ secrets.BUILDING_PORT }}
+     key: ${{ secrets.BUILDING_KEY }}
      source: "index.html,css/,js/,assets/,pages/"
      target: /var/www/html
      
