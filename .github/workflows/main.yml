@@ -42,12 +42,12 @@ jobs:
     uses: actions/upload-artifact@v4
     with:
       name: terraform.tfstate
-      path: /home/runner/work/terraform/terraform/terraform.tfstate
+      path: ./terraform
   - name: Download Artifact
     uses: actions/download-artifact@v4
     with:
       name: terraform.tfstate
-      path: /home/runner/work/terraform/terraform/downloads
+      path: ./terraform
   - name: copy file via ssh key
     uses: appleboy/scp-action@v0.1.7
     with:
