@@ -1,0 +1,50 @@
+name: EdificioVirtual
+# decimos que cuando hagamos un push del proyecto de la rama main
+on:
+ push:
+  branches: [main]
+ 
+# entonces realizaremos los siguientes trabajos
+jobs:
+ deploy:
+  runs-on: ubuntu-latest
+  steps:
+  - name: checkout
+    uses: actions/checkout@v4.2.1
+  - name: CONFIGURAR CREDENCIALES AWS
+    uses: aws-actions/configure-aws-credentials@v4
+    with:
+     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+     aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+     aws-region: "us-east-1" # Cambia a la región de AWS que estás usando
+     # creamos key publica para la instancia de aws
+  - name: Create SSH Key File
+    run: echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./building-ssh.pub
+    shell: bash
+  - name: Set up Terraform
+    uses: hashicorp/setup-terraform@v3
+  - name: Initialize Terraform
+    run: terraform init
+    working-directory: ${{ env.tf_actions_working_dir }}
+  - name: Verificar Archivos Después de Apply 2222222222222
+    run: |
+      echo "Listado de archivos después de terraform apply:"
+      ls -la /home/runner/work/terraform/
+  - name: Terraform plan
+    run: terraform plan -no-color
+    working-directory: ${{ env.tf_actions_working_dir }}
+  - name: Terraform apply
+    run: terraform apply -auto-approve
+    working-directory: ${{ env.tf_actions_working_dir }}
+  - name: Upload Terraform State
+    uses: actions/upload-artifact@v4
+    with:
+      name: terraform.tfstate
+      path: /home/runner/work/terraform/terraform/terraform.tfstate
+  - name: Download Artifact
+    uses: actions/download-artifact@v4
+    with:
+      name: terraform.tfstate
+      path: /home/runner/work/terraform/terraform/downloads
+     
