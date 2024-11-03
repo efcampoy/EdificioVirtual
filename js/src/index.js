@@ -1,6 +1,6 @@
 /**
  * Inicializa un mapa con Leaflet centrado en una latitud y longitud específicas,
- * añade una capa de mosaicos de OpenStreetMap, coloca un marcador en el centro,
+ * añade una capa de mosaicos de  OpenStreetMap, coloca un marcador en el centro,
  * y muestra un mensaje emergente. 
  *
  * @function whereAreWe
