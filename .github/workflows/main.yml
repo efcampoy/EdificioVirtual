@@ -53,9 +53,9 @@ jobs:
     with:
     # Cogemos la ip publica de nuestro archivo outputs terraform
      host: ${{ steps.apply.outputs.building_public_ip }}
-     username: ${{ secrets.USERNAME }}
-     port: ${{ secrets.PORT }}
-     key: ${{ secrets.KEY }}
+     username: ${{ secrets.BUILDING_USERNAME }}
+     port: ${{ secrets.BUILDING_PORT }}
+     key: ${{ secrets.BUILDING_KEY }}
      source: "index.html,css/,js/,assets/,pages/"
      target: /var/www/html
      
