@@ -30,7 +30,7 @@ jobs:
   - name: Verificar Archivos Después de Apply 2222222222222
     run: |
       echo "Listado de archivos después de terraform apply:"
-      ls -la /home/runner/work/terraform/
+      ls -la ./terraform
   - name: Terraform plan
     run: terraform plan -no-color
     working-directory: ./terraform
