@@ -37,7 +37,7 @@ resource "aws_instance" "building_web" {
   instance_type = "t2.micro"
 
   network_interface {
-    network_interface_id = [aws_network.building_instance_interface.id]
+    network_interface_id = aws_network_interface.building_instance_interface.id
     device_index         = 0
   }
 
@@ -61,7 +61,7 @@ resource "aws_instance" "building_web" {
 resource "aws_network_interface" "building_instance_interface" {
   subnet_id       = aws_subnet.public_building_subnet.id
   private_ips     = ["10.0.100.50"]
-  security_groups = [aws_security_group.building_permitir_http_ssh.id]
+  security_groups = [aws_security_group.building_security_group.id]
 
 }
 
