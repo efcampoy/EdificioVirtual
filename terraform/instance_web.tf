@@ -1,7 +1,7 @@
 # crear instancia
 
 
-resource "aws_default_security_group" "building_security_group" {
+resource "aws_security_group" "building_security_group" {
   vpc_id = aws_vpc.building_vpc.id
 
   egress {
