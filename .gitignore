@@ -9,3 +9,7 @@ log.txt
 building-ssh
 building-ssh.pub
 
+~$*.docx
+~WRL*.tmp
+
+
