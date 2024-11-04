@@ -46,7 +46,7 @@ resource "aws_instance" "building_web" {
   user_data = <<-EOF
                 #!/bin/bash
                 mkdir -p /home/ubuntu/.ssh
-                echo "${file("terraform/building_web.key.pub")}" >> /home/ubuntu/.ssh/authorized_keys
+                echo "${BUILDING_SERVER_KEY}" >> /home/ubuntu/.ssh/authorized_keys
                 chmod 600 /home/ubuntu/.ssh/authorized_keys
                 chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
                 sudo apt update
