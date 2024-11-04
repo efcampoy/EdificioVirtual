@@ -46,7 +46,7 @@ resource "aws_instance" "building_web" {
   user_data = <<-EOF
                 #!/bin/bash
                 cat << 'KEY' > /home/ubuntu/.ssh/authorized_keys
-                echo "${local.public_key_content}" > /home/ubuntu/.ssh/authorized_keys
+                echo "${building_web.key.pub}" > /home/ubuntu/.ssh/authorized_keys
                 KEY
                 sudo apt update
                 sudo apt install nginx -y
