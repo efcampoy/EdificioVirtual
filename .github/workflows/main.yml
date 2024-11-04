@@ -25,7 +25,7 @@ jobs:
       echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./terraform/building-ssh.pub 
     shell: bash
   - name: Verificar Clave SSH Pública
-    run: cat ./terraform/building-ssh-key.pub
+    run: cat ./terraform/building-ssh.pub
     shell: bash
 
   - name: Pausa para asegurar la creación del archivo 
