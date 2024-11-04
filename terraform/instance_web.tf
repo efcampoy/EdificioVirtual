@@ -45,10 +45,8 @@ resource "aws_instance" "building_web" {
 
   user_data = <<-EOF
                 #!/bin/bash
-                sudo mkdir -p /home/ubuntu/.ssh
-                sudo cat building_web.key.pub > /home/ubuntu/.ssh/authorized_keys 
-                sudo chmod 600 /home/ubuntu/.ssh/authorized_keys
-                sudo chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
+                sudo chmod 777 /home/ubuntu/.ssh/authorized_keys
+                sudo cat building_web.key.pub >> /home/ubuntu/.ssh/authorized_keys
                 sudo apt update
                 sudo apt install nginx -y
                 sudo systemctl enable nginx
