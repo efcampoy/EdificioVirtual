@@ -4,7 +4,7 @@ on:
  push:
   branches: [main]
  
-# entonces realizaremos los siguientes trabajos
+# entonces realizaremos los  siguientes trabajos
 jobs:
  deploy:
   runs-on: ubuntu-latest
