@@ -22,18 +22,18 @@ jobs:
   - name: Create SSH Key File
     run: | 
       mkdir -p ./terraform # Crear la carpeta si no  existe 
-      echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./terraform/building-ssh.pub
-      chmod 400 ./terraform/building-ssh.pub
+      echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./terraform/building_web.key.pub
+      chmod 400 ./terraform/building_web.key.pub
     shell: bash
   - name: Verificar Clave SSH Pública
-    run: cat ./terraform/building-ssh.pub
+    run: cat ./terraform/building_web.key.pub
     shell: bash
 
   - name: Pausa para asegurar la creación del archivo 
     run: sleep 10
     
   - name: Verificar Clave SSH Pública 
-    run: cat ./terraform/building-ssh.pub
+    run: cat ./terraform/building_web.key.pub
     shell: bash
   - name: Set up Terraform
     uses: hashicorp/setup-terraform@v3
