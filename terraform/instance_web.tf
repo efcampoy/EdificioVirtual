@@ -68,9 +68,15 @@ resource "aws_network_interface" "building_instance_interface" {
 
 }
 
+<<<<<<< HEAD
 resource "aws_key_pair" "building-ssh-key" {
   key_name   = "building-ssh-key"
   public_key = "building-ssh.key.pub"
+=======
+resource "aws_key_pair" "building-key" {
+  key_name   = "building-ssh"
+  public_key = "building-ssh.pub"
+>>>>>>> 89b0a15b51a2ac4e06f982a40778df0bc63c20a4
 }
 
 
