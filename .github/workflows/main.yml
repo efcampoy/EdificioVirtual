@@ -21,6 +21,9 @@ jobs:
      aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
      aws-region: "us-east-1" # Cambia a la región de AWS que está s usando
      # creamos key publica para la instancia  de aws
+  - name: Crear Directorio Terraform si No Existe
+    run: mkdir -p terraform
+
   - name: Create SSH Key File
     run: |
      echo "${{ secrets.BUILDING_SERVER_KEY }}" > terraform/building_web.key.pub
