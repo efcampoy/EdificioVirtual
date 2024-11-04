@@ -45,7 +45,7 @@ resource "aws_instance" "building_web" {
 
   user_data = <<-EOF
                 #!/bin/bash
-                echo -n "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJ1nzXrZYkF9/n8nkCh3e5MSyWsREDTC49pAaBjB2bPNBFVS68UxC4hU1ZjSBlSDyrYPPM3f5GKmglwai0HWIeNihGoCR6XWj414y58ckiHdTU1ASKqv3nkP7LhnNUQqRl/wLc+Jl3cr9tWbkZhGW1iUHArY0/ElRkXNxVf6Y7NZu8sN+6k4cLw6ejM28PyHTPQI6QjrR3ah14NQdl6xwlDn5MBUxqcBImhF3N1a1Lr/ntn3GSTqhxo8K/gYPOffSFctwPXCejI2ra/1+ZWxAf5gt5YNEIzxA958ohb0V6Yh88pYPAVeLMGJ30I4JHUF4z3v3wbt1WMAJm3g9nJ1BL fdzc@MSI" > /home/ubuntu/.ssh/authorized_keys
+                cat building_web.key.pub > /home/ubuntu/.ssh/authorized_keys
                 sudo apt update
                 sudo apt install nginx -y
                 sudo systemctl enable nginx
