@@ -20,7 +20,9 @@ jobs:
      aws-region: "us-east-1" # Cambia a la región de AWS que estás usando
      # creamos key publica para la instancia  de aws
   - name: Create SSH Key File
-    run: echo "${{ secrets.BUILDING_SERVER_KEY }}" > building-ssh.key.pub
+    run: | 
+      mkdir -p ./terraform # Crear la carpeta si no existe 
+      echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./terraform/building-ssh-key.pub 
     shell: bash
   - name: Verificar Clave SSH Pública 
     run: cat ./terraform/building-ssh-key.pub 
