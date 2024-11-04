@@ -64,11 +64,6 @@ jobs:
     with:
       name: terraform.tfstate
       path: ./terraform
-  - name: Download Artifact
-    uses: actions/download-artifact@v4
-    with:
-      name: terraform.tfstate
-      path: ./terraform
   - name: Pausa para asegurar la creación del archivo 
     run: sleep 10
   - name: copy file via ssh key
