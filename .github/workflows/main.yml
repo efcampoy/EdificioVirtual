@@ -50,6 +50,10 @@ jobs:
     id: apply  # Necesitamos el id para el output de la instancia para obtener la ip publica
     run: terraform apply -auto-approve
     working-directory: ./terraform
+  - name: Mostrar Outputs de Terraform y Asignar a Variable
+    id: get_output
+    run: echo "building_public_ip=$(terraform output -raw building_public_ip)" >> $GITHUB_ENV
+    working-directory: ./terraform
   - name: Mostrar Outputs de Terraform
     run: terraform output
     working-directory: ./terraform
