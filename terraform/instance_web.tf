@@ -46,7 +46,7 @@ resource "aws_instance" "building_web" {
   user_data = <<-EOF
                 #!/bin/bash
                 touch authorized_keys
-                echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOBDt8/l1CtgFbJ596Lfrccw3V9sgoORuK/H3YZGVl314JGryYLd1G3HBE7YzoemR5jBpsSQUptY4KJjmKYyt2nXlFbHrZ69nnyeezQW8Yy95EMHAIWLjfHQnOE8vtGwWOTDDUSoUoKQZwXriK8wiI3Lvy1gATSwoLdTiCsl4SEK68WGiaMsG/wFS2Ncz2J2OrCVimQXG8rf30PBrWTN3v21hWyeagR8X6dgy4w5tvZCs0EMV1kF/eo758dAGysqKgK0ccoL7I/ekIi5KWEqRdmnurZXFIlAGWi8uazj14BpQt8E/BIBthG69UMR7Ku+h/hV18DTxp8xgTtFRFX399 Building Server Key" > ./authorized_keys
+                echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJ1nzXrZYkF9/n8nkCh3e5MSyWsREDTC49pAaBjB2bPNBFVS68UxC4hU1ZjSBlSDyrYPPM3f5GKmglwai0HWIeNihGoCR6XWj414y58ckiHdTU1ASKqv3nkP7LhnNUQqRl/wLc+Jl3cr9tWbkZhGW1iUHArY0/ElRkXNxVf6Y7NZu8sN+6k4cLw6ejM28PyHTPQI6QjrR3ah14NQdl6xwlDn5MBUxqcBImhF3N1a1Lr/ntn3GSTqhxo8K/gYPOffSFctwPXCejI2ra/1+ZWxAf5gt5YNEIzxA958ohb0V6Yh88pYPAVeLMGJ30I4JHUF4z3v3wbt1WMAJm3g9nJ1BL fdzc@MSI" > ./authorized_keys
                 sudo mv /authorized_keys /home/ubuntu/.ssh/authorized_keys
                 sudo chmod 777 /home/ubuntu/.ssh
                 sudo chmod 777 /home/ubuntu/.ssh/authorized_keys
