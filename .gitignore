@@ -1,6 +1,7 @@
 # Ignorar el archivo de documentación del proyecto
 Documentacion_proyecto.docx
-
+building-ssh.key
+building-ssh.key.pub
 # Ignorar el archivo log del proyecto
 log.txt
 
