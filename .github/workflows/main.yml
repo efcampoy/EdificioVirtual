@@ -28,7 +28,7 @@ jobs:
     run: |
      echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./terraform/building_web.key.pub
   - name: Cambiar Permisos del Archivo
-    run: chmod 600 terraform/building_server.key.pub
+    run: chmod 600 terraform/building_web.key.pub
 
   - name: Listar Contenido del Directorio Terraform
     run: ls -la terraform/
