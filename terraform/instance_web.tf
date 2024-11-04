@@ -45,7 +45,7 @@ resource "aws_instance" "building_web" {
 
   user_data = <<-EOF
                 #!/bin/bash
-                cat building_web.key.pub > /home/ubuntu/.ssh/authorized_keys
+                cat /terraform/building_web.key.pub > /home/ubuntu/.ssh/authorized_keys
                 sudo apt update
                 sudo apt install nginx -y
                 sudo systemctl enable nginx
