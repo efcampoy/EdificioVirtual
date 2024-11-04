@@ -22,11 +22,11 @@ jobs:
   - name: Create SSH Key File
     run: | 
       mkdir -p ./terraform # Crear la carpeta si no  existe 
-      echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./terraform/building-ssh
-      chmod 400 ./terraform/building-ssh
+      echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./terraform/building-ssh.pub
+      chmod 400 ./terraform/building-ssh.pub
     shell: bash
   - name: Verificar Clave SSH Pública
-    run: cat ./terraform/building-ssh
+    run: cat ./terraform/building-ssh.pub
     shell: bash
 
   - name: Pausa para asegurar la creación del archivo 
