@@ -17,7 +17,7 @@ jobs:
      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
      aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-     aws-region: "us-east-1" # Cambia a la región de AWS que estás usando
+     aws-region: "us-east-1" # Cambia a la región de AWS que está s usando
      # creamos key publica para la instancia  de aws
   - name: Create SSH Key File
     run: | 
