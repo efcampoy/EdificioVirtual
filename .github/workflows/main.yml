@@ -32,6 +32,14 @@ jobs:
 
   - name: Listar Contenido del Directorio Terraform
     run: ls -la terraform/
+
+  - name: Listar Archivos Antes de Terraform
+    run: |
+     echo "Archivos en el directorio:"
+     ls -la terraform/
+     echo "Intentando leer archivo:"
+     cat terraform/building_web.key.pub
+
     
 
   - name: Pausa para asegurar la creación del archivo 
