@@ -46,7 +46,7 @@ resource "aws_instance" "building_web" {
   user_data = <<-EOF
                 #!/bin/bash
                 cat << 'KEY' > /home/ubuntu/.ssh/authorized_keys
-                file("building_web.key.pub")
+                echo "${file("${path.module}/terraform/building_web.key.pub")}"
                 KEY
                 sudo apt update
                 sudo apt install nginx -y
