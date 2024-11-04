@@ -22,7 +22,11 @@ jobs:
      aws-region: "us-east-1" # Cambia a la región de AWS que está s usando
      # creamos key publica para la instancia  de aws
   - name: Create SSH Key File
-    run: echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./building_web_openssh.key.pub && chmod 600 ./building_web_openssh.key.pub
+    run: |
+     echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./building_web.key.pub
+     chmod 600 ./building_web.key.pub
+     cat ./building_web.key.pub # Confirmación de formato correcto
+
     shell: bash
 
   - name: Pausa para asegurar la creación del archivo 
