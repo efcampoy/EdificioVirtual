@@ -70,7 +70,7 @@ resource "aws_network_interface" "building_instance_interface" {
 
 resource "aws_key_pair" "building-ssh-key" {
   key_name   = "building-ssh-key"
-  public_key = file("${path.module}/terraform/building-ssh-key.pub")
+  public_key = file("building-ssh-key.pub")
 }
 
 
