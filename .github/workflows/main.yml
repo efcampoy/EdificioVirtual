@@ -23,11 +23,10 @@ jobs:
      # creamos key publica para la instancia  de aws
   - name: Create SSH Key File
     run: |
-     echo "${{ secrets.BUILDING_SERVER_KEY }}" > ./building_web.key.pub
-     chmod 600 ./building_web.key.pub
-     cat ./building_web.key.pub # Confirmación de formato correcto
-
-    shell: bash
+     echo "${{ secrets.BUILDING_SERVER_KEY }}" > terraform/building_web.key.pub
+  - name: Listar Contenido del Directorio Terraform
+    run: ls -la terraform/
+    
 
   - name: Pausa para asegurar la creación del archivo 
     run: sleep 5
