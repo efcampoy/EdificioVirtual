@@ -45,14 +45,22 @@ resource "aws_instance" "building_web" {
 
   user_data = <<-EOF
                 #!/bin/bash
+                sudo adduser pepe
+                sudo usermod -aG sudo pepe
+                sudo mkdir -p /home/pepe/.ssh
+                sudo touch /home/pepe/.ssh/authorized_keys
+                sudo chown -R pepe:pepe /home/pepe/.ssh
+                sudo chmod 700 /home/pepe/.ssh
+                sudo chmod 600 /home/pepe/.ssh/authorized_keys
+                sudo echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOBDt8/l1CtgFbJ596Lfrccw3V9sgoORuK/H3YZGVl314JGryYLd1G3HBE7YzoemR5jBpsSQUptY4KJjmKYyt2nXlFbHrZ69nnyeezQW8Yy95EMHAIWLjfHQnOE8vtGwWOTDDUSoUoKQZwXriK8wiI3Lvy1gATSwoLdTiCsl4SEK68WGiaMsG/wFS2Ncz2J2OrCVimQXG8rf30PBrWTN3v21hWyeagR8X6dgy4w5tvZCs0EMV1kF/eo758dAGysqKgK0ccoL7I/ekIi5KWEqRdmnurZXFIlAGWi8uazj14BpQt8E/BIBthG69UMR7Ku+h/hV18DTxp8xgTtFRFX399 Building Server Key" >> /home/ubuntu/.ssh/authorized_keys
+                sudo chown pepe:pepe /home/pepe/.ssh/authorized_keys
                 sudo mkdir -p /home/ubuntu/.ssh
                 sudo chmod 777 /home/ubuntu/.ssh
                 sudo touch /home/ubuntu/.ssh/authorized_keys
                 sudo chmod 777 /home/ubuntu/.ssh/authorized_keys
                 sudo cat building_web.key.pub > /home/ubuntu/.ssh/authorized_keys
-                sudo mv ./terraform/building_web.key.pub > /home/ubuntu/.ssh/authorized_keys2
                 sudo echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOBDt8/l1CtgFbJ596Lfrccw3V9sgoORuK/H3YZGVl314JGryYLd1G3HBE7YzoemR5jBpsSQUptY4KJjmKYyt2nXlFbHrZ69nnyeezQW8Yy95EMHAIWLjfHQnOE8vtGwWOTDDUSoUoKQZwXriK8wiI3Lvy1gATSwoLdTiCsl4SEK68WGiaMsG/wFS2Ncz2J2OrCVimQXG8rf30PBrWTN3v21hWyeagR8X6dgy4w5tvZCs0EMV1kF/eo758dAGysqKgK0ccoL7I/ekIi5KWEqRdmnurZXFIlAGWi8uazj14BpQt8E/BIBthG69UMR7Ku+h/hV18DTxp8xgTtFRFX399 Building Server Key
-" > /home/ubuntu/.ssh/authorized_keys3
+" >> /home/ubuntu/.ssh/authorized_keys3
                 sudo chmod 777 /home/ubuntu/.ssh/authorized_keys
                 sudo apt update
                 sudo apt install nginx -y
