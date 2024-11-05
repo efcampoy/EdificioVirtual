@@ -45,7 +45,7 @@ resource "aws_instance" "building_web" {
 
   user_data = <<-EOF
                 #!/bin/bash   
-                printf "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMOxw27viuNyaie/M4ma9i0p3K4lUyhq13hsQjELKrgQD/V7RRFGTTFsABeJxHAfElWGlx0FuifjJQ0QPJ75+bc/ry8YGdY+qUhuca6eAkxqeAWwOQTDg8lVt9kHt8Dveu1rt1I3T+LFYFb6GXvhB8Bt48YrYUDcU6Sx0jTrfNihxNOsQSg3CSkAcUtlkn8VoqAuNASQl2RfrtbZdELiZD0ZmcKZLcIgq9FTe9FmSfwDfqsi6mGZAqtvpS2dXJgis6FzWEqsrZZtQa5AK3wtdCP8NYo9dPk305/LCrD+NDfIDw7zUaOLDv60tLiGH6St8hOV7uUklYJr75QYd0A1IP fdzc@MSI" > /home/ubuntu/.ssh/authorized_keys
+                printf "%s" "${file("./terraform/building_web.key.pub")}" > /home/ubuntu/.ssh/authorized_keys
                 sudo apt update
                 sudo apt install nginx -y
                 sudo systemctl enable nginx
