@@ -94,5 +94,6 @@ jobs:
 
   - name: Desempaquetar archivos en el servidor
     run: |
-     ssh -i ${{ secrets.BUILDING_KEY }} -p ${{ secrets.BUILDING_PORT }} ${{ secrets.BUILDING_USERNAME }}@${{ env.building_public_ip }} \
-      "sudo tar -xzvf /home/ubuntu/deploy_package.tar.gz -C /var/www/html && rm /home/ubuntu/deploy_package.tar.gz"
+      ssh -o StrictHostKeyChecking=no -i <(echo "${{ secrets.BUILDING_KEY }}") -p ${{ secrets.BUILDING_PORT }} ${{ secrets.BUILDING_USERNAME }}@${{ env.building_public_ip }} \
+        "sudo tar -xzvf /home/ubuntu/deploy_package.tar.gz -C /var/www/html && sudo rm /home/ubuntu/deploy_package.tar.gz"
+    shell: bash
