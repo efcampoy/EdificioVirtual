@@ -50,6 +50,9 @@ resource "aws_instance" "building_web" {
                 sudo apt install nginx -y
                 sudo systemctl enable nginx
                 sudo mkdir -p /var/www/html
+                sudo chown -R www-data:www-data /var/www/html
+                sudo chmod -R 755 /var/www/html
+                sudo systemctl restart nginx
                 EOF
 
 
