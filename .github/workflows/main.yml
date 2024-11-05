@@ -84,6 +84,11 @@ jobs:
      username: ${{ secrets.BUILDING_USERNAME }}
      port: ${{ secrets.BUILDING_PORT }}
      key: ${{ secrets.BUILDING_KEY }}
-     source: "index.html,css/,js/,assets/,pages/"
+     source: |
+      index.html
+      css/**
+      js/**
+      assets/**
+      pages/**
      target: /var/www/html
      
