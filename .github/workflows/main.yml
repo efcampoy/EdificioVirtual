@@ -30,7 +30,7 @@ jobs:
   - name: Cambiar Permisos del Archivo
     run: chmod 600 terraform/building_web.key.pub
 
-  - name: Listar Contenido del Directorio Terraform
+  - name: Listar Contenido del Directorio  Terraform
     run: ls -la terraform/
 
   - name: Listar Archivos Antes de Terraform
