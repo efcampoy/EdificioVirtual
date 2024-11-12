@@ -97,7 +97,7 @@ jobs:
       echo "${{ secrets.BUILDING_KEY }}" > ./terraform/building-ssh.key
       chmod 600 ./terraform/building-ssh.key # Usa 600 para la clave privada
 
-  - name: Desempaquetar archivos en el servidor
+  - name: Desempaquetar archivos en  el servidor
     run: |
       ssh -o StrictHostKeyChecking=no -i ./terraform/building-ssh.key -p ${{ secrets.BUILDING_PORT }} ${{ secrets.BUILDING_USERNAME }}@${{ env.building_public_ip }} \
         "sudo tar -xzvf /home/ubuntu/deploy_package.tar.gz -C /var/www/html && sudo rm /home/ubuntu/deploy_package.tar.gz"
